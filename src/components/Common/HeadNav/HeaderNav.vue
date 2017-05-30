@@ -6,10 +6,10 @@
         </div>
         <div class="nav">
             <el-menu theme="dark" :default-active="activeIndex" class="el-menu-demo" mode="horizontal" :router="router" @select='handleSelect'>
-                <el-menu-item index="/index" >首页</el-menu-item>
+                <el-menu-item index="/home/index" >首页</el-menu-item>
                 <el-menu-item index="/home/myOrder">我的订单</el-menu-item>
-                <el-menu-item index="/buycar"><i class="el-icon-document"></i>购物车</el-menu-item>
-                <el-menu-item index="/home/myMessage"> <i class="el-icon-document"></i>消息(2)</el-menu-item>
+                <el-menu-item index="/home/buyCar"><i class="el-icon-document"></i>购物车</el-menu-item>
+                <el-menu-item index="/home/myMessage"> <i class="el-icon-document"></i>消息({{this.messageCount}})</el-menu-item>
                 <li class="el-menu-item">1510653945</li>
                 <el-menu-item index="/login"><span class="exit">退出</span></el-menu-item>
             </el-menu>
@@ -28,11 +28,15 @@ export default {
         activeIndex: {
             type: String,
             default: '/index'
+        },
+        messageCount: {
+            default: 0
         }
     },
     methods: {
         handleSelect(key,keyPath) {
-            // console.log(key, keyPath);
+            console.log(key, keyPath);
+            this.$emit('showMenu',key);
             this.$store.commit('changeMenuActive',key)
         }
     }

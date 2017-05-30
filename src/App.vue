@@ -1,6 +1,5 @@
 <template>
     <div id="app">
-        <head-nav :activeIndex = 'activeIndex'></head-nav>
         <router-view></router-view>
     </div>
 </template>
@@ -9,11 +8,7 @@ import Common from './components/Common/index.js';
 export default {
     name: 'app',
     components: Common,
-    computed: {
-        activeIndex() {
-            return this.$store.state.navActiveIndex;
-        }
-    }
+    
 }
 </script>
 <style scoped lang='less'>
