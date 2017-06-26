@@ -1,4 +1,4 @@
- module.exports = {
+export default {
     suport: [{
         "index": "1",
         "name": "orderCenter",

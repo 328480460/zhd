@@ -25,16 +25,48 @@ var proxyTable = config.dev.proxyTable
 var app = express()
 var compiler = webpack(webpackConfig)
 
-// 引入mock的数据 
-var data = require('../src/data/userInfo.js');
-console.log(data);
 var apiRoutes = express.Router();
+// 引入mock的数据 
+var myMessage = require('../src/data/myMessage.js');
+var wholesaler = require('../src/data/wholesaler.js');
+var address = require('../src/data/address.js');
 
-apiRoutes.get('/userInfo',(req, res) => {
+// 请求登录接口
+apiRoutes.post('/login',(req, res) => {
+  console.log(req.query);
   res.json({
-    userInfo:data
+    state:'success',
+    userToken:1234567890,
+    userType: "0"
   })
-})
+});
+
+// 请求myMessage接口
+apiRoutes.post('/message',(req, res) => {
+  res.json({
+    info: myMessage,
+  })
+});
+// 请求myMessage接口
+apiRoutes.post('/wholesaler',(req, res) => {
+  res.json({
+    info: wholesaler,
+  })
+});
+
+// 请求删除常用商家接口
+apiRoutes.post('/delsaler',(req, res) => {
+  res.json({
+    info: 'success',
+  })
+});
+// 请求地址管理接口
+apiRoutes.post('/address',(req, res) => {
+  res.json({
+    info: address,
+  })
+});
+
 
 app.use('/api',apiRoutes)
 

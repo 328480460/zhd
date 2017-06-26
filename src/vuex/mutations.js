@@ -1,13 +1,22 @@
 export default {
-	// 改变nav当前选中
-	changeNavActive(state,currentActive) {
-		state.navActiveIndex = currentActive;
-		// console.log(currentActive);
+	set_cur_route(state, paths) {
+		state.headerCurRouter = paths.fullPath;
+        state.leftCurRouter = paths.subPath.replace('/','');
 	},
-	// 改变leftMenu当前选中
-	changeMenuActive(state,currentActive) {
-		var _currentActive = currentActive.replace(/\/home\//,'')
-		state.menuActiveIndex = _currentActive;
-		// console.log(_currentActive +'changeMenuActive');
+	init_cur_route(state) {
+		state.headerCurRouter = '/home/index';
+	},
+	set_login_state(state,flag) {
+		state.isLogin = flag;
+	},
+	set_user_type(state,userType) {
+		state.userType = userType;
+	},
+	set_user_token(state,userToken) {
+		state.userToken = userToken;
+	},
+	remove_sesson() {
+		sessionStorage.removeItem("userToken");
+		sessionStorage.removeItem("userType");
 	}
 }

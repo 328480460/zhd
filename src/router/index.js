@@ -5,27 +5,25 @@ import RouterPages from '../components/index.js';
 
 Vue.use(Router)
 
+
 export default new Router({
     // mode:'history',
     routes: [{
+        name: 'home',
         path: '/',
-        name: 'Home',
-        redirect: '/Home'
+        redirect: '/home/index'
     }, {
-        path: '/Home',
-        name: 'Home',
+        path: '/home',
         component: RouterPages.Home,
-        children: [{
-            path: '/',
-            redirect: 'Index',
-        }, {
-            path: 'Index',
-            name: 'Index',
+        redirect: '/home/index',
+        children: [ {
+            path: 'index',
+            name: 'index',
             component: RouterPages.Index
 
         }, {
-            path: 'BuyCar',
-            name: 'BuyCar',
+            path: 'buyCar',
+            name: 'buyCar',
             component: RouterPages.BuyCar
 
         }, {
@@ -34,25 +32,30 @@ export default new Router({
             component: RouterPages.Pages.myOrder
 
         }, {
+            name: 'myMessage',
             path: 'myMessage',
             component: RouterPages.Pages.myMessage
 
         }, {
+            name: 'address',
             path: 'address',
             component: RouterPages.Pages.address
         }, {
+            name: 'revisePassWord',
             path: 'revisePassWord',
             component: RouterPages.Pages.revisePassWord
         }, {
+            name: 'userInfo',
             path: 'userInfo',
             component: RouterPages.Pages.userInfo
         }, {
+            name: 'wholeSaler',
             path: 'wholeSaler',
             component: RouterPages.Pages.wholeSaler
         }, ]
     }, {
-        path: '/Login',
-        name: 'Login',
+        name: 'login',
+        path: '/login',
         component: RouterPages.Login
     }]
 })
